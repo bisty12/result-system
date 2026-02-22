@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,13 +20,15 @@
         .btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -4px rgba(79, 70, 229, 0.4); }
         .marksheet-border { border: 15px solid #1e293b; padding: 40px; position: relative; }
         .marksheet-border::after { content: ''; position: absolute; inset: 5px; border: 2px solid #1e293b; pointer-events: none; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
     </style>
 </head>
 <body>
 
     <nav class="flex justify-between items-center px-6 md:px-16 py-4 bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b shadow-sm">
         <div class="flex items-center space-x-3 cursor-pointer" onclick="showPage('home')">
-            <img src="https://i.ibb.co/6803hS5/graphic-arts-logo.png" alt="Logo" class="w-12 h-12 object-contain">
+            <img src="https://upload.wikimedia.org/wikipedia/bn/e/ef/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AB%E0%A6%BF%E0%A6%95-%E0%A6%86%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%B8-%E0%A6%87%E0%A6%A8%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%9F%E0%A6%BF%E0%A6%89%E0%A6%9F.png" alt="GAI Logo" class="w-12 h-12 object-contain">
             <h1 class="font-extrabold text-xl text-slate-800 tracking-tight">SRMS <span class="text-indigo-600">PREMIUM</span></h1>
         </div>
         <div class="flex items-center space-x-6 text-sm font-bold text-slate-600">
@@ -35,8 +37,9 @@
         </div>
     </nav>
 
-    <section id="home-page" class="flex flex-col items-center justify-center text-center px-6 py-32 min-h-[85vh]">
+    <section id="home-page" class="flex flex-col items-center justify-center text-center px-6 py-20 min-h-[85vh]">
         <span class="bg-indigo-100 text-indigo-600 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-6">Digital Campus v3.0</span>
+        <img src="https://upload.wikimedia.org/wikipedia/bn/e/ef/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AB%E0%A6%BF%E0%A6%95-%E0%A6%86%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%B8-%E0%A6%87%E0%A6%A8%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%9F%E0%A6%BF%E0%A6%89%E0%A6%9F.png" alt="GAI Logo" class="w-32 h-32 object-contain mb-8 mx-auto">
         <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 leading-tight">Fastest Student <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600 font-black">Result Portal.</span></h1>
         <p class="mt-6 text-slate-500 text-lg max-w-xl">Reliable, secure, and instant result verification system for Govt. Graphic Arts Institute.</p>
         <button onclick="showPage('portal')" class="mt-12 btn-gradient text-white px-12 py-5 rounded-2xl font-bold text-lg shadow-2xl">Check Your Marksheet</button>
@@ -64,11 +67,24 @@
         </div>
     </section>
 
+    <section id="login-page" class="hidden-section flex items-center justify-center py-20 px-4">
+        <div class="max-w-md w-full glass-card p-10 text-center border-b-8 border-indigo-600 shadow-2xl">
+            <img src="https://upload.wikimedia.org/wikipedia/bn/e/ef/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AB%E0%A6%BF%E0%A6%95-%E0%A6%86%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%B8-%E0%A6%87%E0%A6%A8%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%9F%E0%A6%BF%E0%A6%89%E0%A6%9F.png" alt="GAI Logo" class="w-16 h-16 object-contain mx-auto mb-6">
+            <h2 class="text-2xl font-black text-slate-800 mb-2">Admin Portal</h2>
+            <p class="text-slate-400 text-sm font-bold mb-8 italic">Authorized personnel only</p>
+            <input type="password" id="adminPass" class="w-full p-4 bg-slate-50 border rounded-2xl mb-4 text-center text-3xl tracking-[0.5em] font-black outline-none focus:ring-2 focus:ring-indigo-500" placeholder="••••">
+            <button onclick="verifyAdmin()" class="w-full py-4 bg-slate-900 text-white font-black rounded-2xl hover:bg-black transition shadow-lg">Authenticate</button>
+        </div>
+    </section>
+
     <section id="admin-dashboard" class="hidden-section px-6 md:px-16 py-12">
         <div class="flex justify-between items-end mb-12">
-            <div>
-                <h2 class="text-4xl font-black text-slate-900">Control <span class="text-indigo-600">Center</span></h2>
-                <p class="text-slate-500 font-semibold mt-1">Manage database records and student performances.</p>
+            <div class="flex items-center gap-4">
+                <img src="https://upload.wikimedia.org/wikipedia/bn/e/ef/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AB%E0%A6%BF%E0%A6%95-%E0%A6%86%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%B8-%E0%A6%87%E0%A6%A8%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%9F%E0%A6%BF%E0%A6%89%E0%A6%9F.png" alt="GAI Logo" class="w-16 h-16 object-contain">
+                <div>
+                    <h2 class="text-4xl font-black text-slate-900">Control <span class="text-indigo-600">Center</span></h2>
+                    <p class="text-slate-500 font-semibold mt-1">Manage database records and student performances.</p>
+                </div>
             </div>
             <button onclick="showPage('home')" class="bg-rose-50 text-rose-600 px-6 py-2.5 rounded-xl font-bold border border-rose-100">Sign Out</button>
         </div>
@@ -76,7 +92,7 @@
         <div class="mb-8 flex flex-col md:flex-row gap-4">
             <div class="relative flex-1">
                 <input type="text" id="dbSearch" onkeyup="filterTable()" placeholder="Search by name or roll..." class="w-full p-4 pl-12 bg-white border rounded-2xl font-semibold shadow-sm focus:ring-2 focus:ring-indigo-500 outline-none">
-                <span class="absolute left-4 top-4.5 opacity-30">🔍</span>
+                <span class="absolute left-4 top-4 opacity-30">🔍</span>
             </div>
             <div class="bg-indigo-600 text-white px-6 py-4 rounded-2xl font-bold flex items-center shadow-lg">
                 Total Students: <span id="totalCounter" class="ml-2 font-black">0</span>
@@ -120,23 +136,13 @@
         </div>
     </section>
 
-    <section id="login-page" class="hidden-section flex items-center justify-center py-20 px-4">
-        <div class="max-w-md w-full glass-card p-10 text-center border-b-8 border-indigo-600 shadow-2xl">
-            <div class="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">🔐</div>
-            <h2 class="text-2xl font-black text-slate-800 mb-2">Admin Portal</h2>
-            <p class="text-slate-400 text-sm font-bold mb-8 italic">Authorized personnel only</p>
-            <input type="password" id="adminPass" class="w-full p-4 bg-slate-50 border rounded-2xl mb-4 text-center text-3xl tracking-[0.5em] font-black outline-none focus:ring-2 focus:ring-indigo-500" placeholder="••••">
-            <button onclick="verifyAdmin()" class="w-full py-4 bg-slate-900 text-white font-black rounded-2xl hover:bg-black transition shadow-lg">Authenticate</button>
-        </div>
-    </section>
-
     <div id="resultModal" class="hidden fixed inset-0 z-[100] bg-slate-900/80 backdrop-blur-md flex items-center justify-center p-4">
         <div class="bg-white w-full max-w-4xl max-h-[95vh] overflow-y-auto rounded-[40px] shadow-2xl relative p-2">
             <div id="marksheet-pdf" class="bg-white p-8 md:p-12">
                 <div class="marksheet-border">
                     <div class="flex flex-col md:flex-row justify-between items-center border-b-4 border-slate-900 pb-8 mb-8">
                         <div class="flex items-center gap-4">
-                            <img src="https://i.ibb.co/6803hS5/graphic-arts-logo.png" alt="Inst Logo" class="w-20 h-20 object-contain">
+                            <img src="https://upload.wikimedia.org/wikipedia/bn/e/ef/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AB%E0%A6%BF%E0%A6%95-%E0%A6%86%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%B8-%E0%A6%87%E0%A6%A8%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%9F%E0%A6%BF%E0%A6%89%E0%A6%9F.png" alt="Inst Logo" class="w-20 h-20 object-contain">
                             <div class="text-center md:text-left">
                                 <h2 class="text-3xl font-black text-slate-900 uppercase leading-none">Govt. Graphic Arts Institute</h2>
                                 <p class="text-sm font-bold text-slate-500 mt-1">Dhaka, Bangladesh | Official Academic Transcript</p>
@@ -153,7 +159,7 @@
                             <p class="text-xs font-black uppercase italic">Student Signature</p>
                         </div>
                         <div class="text-center">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Signature_of_Ghulam_Muhammad.png" alt="Principal Signature" class="h-10 mx-auto opacity-90 mb-1">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Jon_Kirsch%27s_Signature.png" alt="Principal Signature" class="h-10 mx-auto opacity-90 mb-1">
                             <div class="border-t-2 border-slate-900 pt-2 w-48">
                                 <p class="text-xs font-black uppercase italic">Principal / Controller</p>
                             </div>
